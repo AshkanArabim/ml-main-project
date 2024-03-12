@@ -9,6 +9,7 @@ from torch import optim
 
 # housework
 device = 'cuda' if torch.cuda.is_available() else 'cpu'
+print(f'using {device}.')
 transform = transforms.Compose([
     # transforms.functional.pil_to_tensor,
     transforms.ToTensor(),
@@ -63,6 +64,7 @@ class Model(nn.Module):
 
 
 # train model
+print("training...")
 model = Model().to(device)
 optimizer = optim.Adam(model.parameters())
 loss_func = nn.CrossEntropyLoss()
@@ -72,13 +74,13 @@ for epoch in range(200):
         inputs, labels = data
         inputs = inputs.to(device)
         labels = labels.to(device)
-        pred = torch.argmax(model(inputs), dim=1)
+        pred = model(inputs)
         batch_loss = loss_func(pred, labels)
         batch_loss.backward()
         optimizer.step()
         
         if i % 10000 == 0:
-            print(f'epoch {i}==================')
+            print(f'epoch {i} ------------------------------------')
             print(f'loss=\t{batch_loss}')
             print(f'accuracy=\t{torch.sum(torch.argmax(pred) == labels) / len(labels)}')
             
@@ -97,7 +99,7 @@ for data in ds_test:
     inputs, labels = data
     inputs = inputs.to(device)
     labels = labels.to(device)
-    pred = torch.argmax(model(inputs), dim=1)
+    pred = model(inputs)
     total_correct_preds += torch.sum(torch.argmax(pred) == labels)
     total_datapoints += len(labels)
     
