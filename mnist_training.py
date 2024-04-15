@@ -67,7 +67,7 @@ class Model(nn.Module):
 
 # train model
 model = Model().to(device)
-optimizer = optim.Adam(model.parameters())
+optimizer = optim.AdamW(model.parameters())
 loss_func = nn.CrossEntropyLoss()
 
 print('summary:')
