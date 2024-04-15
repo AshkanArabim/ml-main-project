@@ -97,6 +97,9 @@ print("finished training.")
 # save model
 # eh...
 
+# Working on it -Ale
+
+
 
 # make prediction
 print('evaluating performance...')
