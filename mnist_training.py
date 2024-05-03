@@ -83,7 +83,7 @@ print("finished training.")
 
 # save model
 # eh...
-torch.save(model.parameters, "model.pth")
+torch.save(model, "model.pth")
 
 
 # make prediction
