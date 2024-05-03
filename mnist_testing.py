@@ -18,6 +18,7 @@ class Model(nn.Module):
         self.fc1 = nn.Linear(1152, 512)
         self.fc2 = nn.Linear(512, 10)
 
+
     def forward(self, x):
         x = functional.relu(self.conv1(x))
         x = self.pool(x)
