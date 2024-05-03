@@ -61,7 +61,7 @@ print('summary:')
 print(summary(model, (1, 28, 28)))
 
 print("training...")
-epochs = 100
+epochs = 60
 for epoch in range(epochs):
     print(f'epoch {epoch} or {epochs} ------------------------------------')
     for i, data in enumerate(ds_train):
@@ -83,6 +83,7 @@ print("finished training.")
 
 # save model
 # eh...
+torch.save(model, "model.pth")
 
 
 # make prediction
