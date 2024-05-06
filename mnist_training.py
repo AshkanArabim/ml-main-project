@@ -22,8 +22,8 @@ transform = transforms.Compose([
 ds_train = FashionMNIST('.', download=True, train=True, transform=transform)
 ds_test = FashionMNIST('.', download=True, train=False, transform=transform)
 
-ds_train = DataLoader(ds_train, batch_size=2 ** 13, shuffle=True)
-ds_test = DataLoader(ds_test, batch_size=2 ** 13, shuffle=True)
+ds_train = DataLoader(ds_train, batch_size=2 ** 12, shuffle=True)
+ds_test = DataLoader(ds_test, batch_size=2 ** 12, shuffle=True)
 
 
 # train model
